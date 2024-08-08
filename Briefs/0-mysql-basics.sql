@@ -42,6 +42,10 @@ SHOW tables FROM dbName;
 
 --tables
 CREATE TABLE IF NOT EXISTS table_name (
-	id INT,
+	id INT UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(256)
 );
+
+DESCRIBE table_name; --will show table rows and columns
+EXPLAIN table_name --do the same as above
+SHOW CREATE TABLE table_name --will show full description of the table
