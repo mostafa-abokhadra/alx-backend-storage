@@ -96,3 +96,14 @@ SELECT MAX(score) AS winner FROM table_name;
 SELECT SUM(distinct score) FROM table_name -- here replicated score values will not be summed up
 SELECT score, count(score) AS number FROM second_table group by score ORDER BY score DESC;
 SELECT score, name FROM second_table WHERE name!='' ORDER BY score DESC;
+
+JOIN
+"""
+    it's used to combine data or rows from two tables or more based on common field between them.
+    JOIN is a clause used in SQL to link data from one table to another table using one or more data column
+    shared between two tables, In other words, we combine data of the two existing tables into one.
+
+    https://tableplus.com/blog/2018/09/a-beginners-guide-to-seven-types-of-sql-joins.html
+    https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/
+    https://web.csulb.edu/colleges/coe/cecs/dbdesign/dbdesign.php?page=sql/join.php
+"""
