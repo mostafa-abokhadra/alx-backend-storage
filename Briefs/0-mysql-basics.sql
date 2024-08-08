@@ -155,3 +155,24 @@ DROP 'USER'@'host'; -- delete a user
 SELECT USER();
 --to change user pass word
 ALTER USER 'username'@'hostname' IDENTIFIED BY 'new_pass';
+
+"""
+using the Create User Statement only creates a new user but does not grant any privileges to the user account.
+Therefore to grant privileges to a user account, the GRANT statement is used.
+"""
+-- to view permission of a user account:
+SHOW GRANTS FOR user_account@'hostname';
+"""
+The `*.*` in the output denotes that the “gfguser1” user account can only login to
+the database server and has no other privileges.
+"""
+-- to grant privilege to a user
+GRANT privilege_name ON object FOR user;
+--to grant all privileges to a user to all databases
+GRANT ALL PRIVILEGES ON *.* To user_name@host
+-- the syntax `GRANT PRIVILEGE_NAME ON databasename.tablename TO user@host`
+-- if you want to grant privileges to all tables in that database:
+GRANT ALL PRIVILEGES ON databasename.* To username@host
+GRANT SELECT ON nursing.cardio TO user@localhost
+--granting privilege to all users
+GRANT SELECT ON users_table TO '*'@'local host';
