@@ -1,3 +1,4 @@
+https://www.w3resource.com/mysql/mysql-triggers.php
 """
     A trigger is a set of actions that are run automatically when a specified change operation
     (INSERT, UPDATE, or DELETE statement) is performed on a specified table.
@@ -114,3 +115,16 @@ INSERT into stu_log VALUES (user(), CONCAT('Update Student Record ',
          OLD.NAME,' Previous Class :',OLD.ST_CLASS,' Present Class ',
          NEW.st_class));
 END
+
+"""
+Read more examples here
+https://www.w3resource.com/mysql/mysql-triggers.php
+"""
+
+Delete a MySQL trigger
+"""
+    To delete or destroy a trigger, use a DROP TRIGGER statement.
+    You must specify the schema name if the trigger is not in the default (current) schema
+    if you drop a table, any triggers for the table are also dropped.
+"""
+DROP TRIGGER IF EXISTS schema_name.trigger_name 
