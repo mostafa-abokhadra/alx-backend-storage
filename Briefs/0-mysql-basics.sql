@@ -143,3 +143,15 @@ ORDER BY number_of_shows DESC;
 
 select s_name, score, status, address_city, email_id, accomplishments from students
 inner join marks on s.s_id = m.s_id inner join details d on  d.school_id = m.school_id;
+
+-- create Users
+CREATE USER 'user_account'@'hostname' IDENTIFIED BY 'password';
+--to allow user account to connect to the database server from any host use '%'
+CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+DROP 'USER'@'host'; -- delete a user
+-- -you can create multiple user with a single create user statement ,
+-- and delete multiple users with one drop statement, just separate them with comma
+-- user() function returns current user name with it's host name used to connect to the server
+SELECT USER();
+--to change user pass word
+ALTER USER 'username'@'hostname' IDENTIFIED BY 'new_pass';
