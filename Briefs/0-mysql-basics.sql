@@ -52,7 +52,13 @@ SHOW CREATE TABLE table_name --will show full description of the table
 DELETE FROM table_name; -- delete the whole table
 TRUNCATE TABLE table_name; --removes all rows from a table, but the table structure and its columns,
                             --constraints, indexes, and so on, remain
-                            
+ALTER TABLE table_name RENAME TO new_name;
+ALTER TABLE table_name RENAME COLUMN old_name To new_name;
+ALTER TABLE table_name ADD column_name data_type;
+ALTER TABLE table_name DROP COLUMN column_name;
+ALTER TABLE table_name MODIFY column_name column_data_type;
+ALTER TABLE `first_table` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 -- insertion
 INSERT INTO personal_data (name, call_number)
 VALUES ('mostafa', '01154199659'), ("name", "0123456789");
@@ -66,3 +72,4 @@ update personal_data set name = 'ahmed' where name = 'mostafa';
 -- delete row
 DELETE FROM personal_data where name = 'ahmed';
 -- if you didn't specify where, then every row of the table will be delelted
+
