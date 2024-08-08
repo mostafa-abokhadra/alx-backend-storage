@@ -92,3 +92,7 @@ count(), sum(), avg(), min(), max()
 SELECT avg(score) FROM second_table;
 SELECT sum(sales) FROM table_name;
 SELECT score AS nums FROM second_table; --nums will be the name of the results
+SELECT MAX(score) AS winner FROM table_name;
+SELECT SUM(distinct score) FROM table_name -- here replicated score values will not be summed up
+SELECT score, count(score) AS number FROM second_table group by score ORDER BY score DESC;
+SELECT score, name FROM second_table WHERE name!='' ORDER BY score DESC;
