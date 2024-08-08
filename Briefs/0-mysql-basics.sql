@@ -84,3 +84,11 @@ SELECT COUNT(*) FROM personal_data;
 -- to get the number of specified value in your table
 SELECT COUNT(*) FROM personal_data where name = 'mostafa';
 
+"""
+    In database management an aggregate function is a function where the values of multiple rows
+    are grouped together as input on certain criteria to form a single value of more significant meaning.
+"""
+count(), sum(), avg(), min(), max()
+SELECT avg(score) FROM second_table;
+SELECT sum(sales) FROM table_name;
+SELECT score AS nums FROM second_table; --nums will be the name of the results
