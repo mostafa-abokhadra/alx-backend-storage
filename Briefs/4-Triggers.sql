@@ -95,3 +95,22 @@ SET NEW.FIRST_NAME = TRIM(NEW.FIRST_NAME);
 SET NEW.LAST_NAME = TRIM(NEW.LAST_NAME);
 SET NEW.JOB_ID = UPPER(NEW.JOB_ID);
 END;
+
+ Example AFTER UPDATE
+ """
+    We have two tables student_mast and stu_log. student_mast have three columns STUDENT_ID,
+    NAME, ST_CLASS. stu_log table has two columns user_id and description.
+    Let we promote all the students in next class i.e. 7 will be 8, 8 will be 9 and so on.
+    After updating a single row in student_mast table a new row will be inserted in stu_log table where
+    we will store the current user id and a small description regarding the current update.
+    Here is the trigger code :
+ """
+CREATE 
+TRIGGER `dbName`.`student_mast_AUPD`
+AFTER UPDATE 
+ON `dbName`.`student_mast`FOR EACH ROW
+BEGIN
+INSERT into stu_log VALUES (user(), CONCAT('Update Student Record ',
+         OLD.NAME,' Previous Class :',OLD.ST_CLASS,' Present Class ',
+         NEW.st_class));
+END
