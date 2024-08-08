@@ -106,4 +106,40 @@ JOIN
     https://tableplus.com/blog/2018/09/a-beginners-guide-to-seven-types-of-sql-joins.html
     https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/
     https://web.csulb.edu/colleges/coe/cecs/dbdesign/dbdesign.php?page=sql/join.php
+
+    it has several types like:
+    1-INEER JOIN
+        returns only connected rows when there is a matching between both tables 
+    2-RIGHT JOIN
+        returns each row from the right table even if there is no matching row with the left table,
+        if right table has no match with the left table row , it will returns null for all the columns
+        in the left table 
+    3-LEFT JOIN
+        will return each row from the left table even if there is no matching row with the right table,
+        if left table row has no match with a right table row it will return null for all the columns in
+        the right table
+    4-FULL JOIN
+        it is combination between right and left joins, it returns every row from the left table and from
+        the right table, when they match the rows are connected but when there isn't a match the row is still
+        included in the join with nulls from the columns of other table
+    5-NATURAL JOIN
 """
+SELECT *
+FROM martian
+INNER JOIN base
+ON martian.base_id = base.base_id;
+
+
+SELECT title, tv_show_genres.genre_id FROM tv_shows
+LEFT JOIN tv_show_genres ON id = tv_show_genres.show_id
+where tv_show_genres.show_id IS NULL
+ORDER BY title, tv_show_genres.genre_id;
+
+SELECT tv_genres.name AS genre, COUNT(tv_show_genres.genre_id) AS number_of_shows FROM tv_genres
+INNER JOIN tv_show_genres
+ON tv_genres.id = tv_show_genres.genre_id
+GROUP BY tv_show_genres.genre_id
+ORDER BY number_of_shows DESC;
+
+select s_name, score, status, address_city, email_id, accomplishments from students
+inner join marks on s.s_id = m.s_id inner join details d on  d.school_id = m.school_id;
