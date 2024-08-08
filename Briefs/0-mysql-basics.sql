@@ -49,3 +49,20 @@ CREATE TABLE IF NOT EXISTS table_name (
 DESCRIBE table_name; --will show table rows and columns
 EXPLAIN table_name --do the same as above
 SHOW CREATE TABLE table_name --will show full description of the table
+DELETE FROM table_name; -- delete the whole table
+TRUNCATE TABLE table_name; --removes all rows from a table, but the table structure and its columns,
+                            --constraints, indexes, and so on, remain
+                            
+-- insertion
+INSERT INTO personal_data (name, call_number)
+VALUES ('mostafa', '01154199659'), ("name", "0123456789");
+
+-- retrieve
+SELECT * FROM personal_data;
+
+-- update
+update personal_data set name = 'ahmed' where name = 'mostafa';
+
+-- delete row
+DELETE FROM personal_data where name = 'ahmed';
+-- if you didn't specify where, then every row of the table will be delelted
