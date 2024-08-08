@@ -185,3 +185,12 @@ GRANT SELECT ON users_table TO '*'@'local host';
 GRANT EXECUTE ON  PROCEDURE | FUNCTION  object TO user;
 GRANT EXECUTE ON FUNCTION Calculatesalary TO 'Amit'@'localhost';
 -- function named CalculateSalary to the user named Amit
+
+"""
+The Revoke statement is used to revoke some or all of the privileges which have been granted to a user in the past.
+"""
+REVOKE privileges ON object FROM user;
+REVOKE SELECT, INSERT, DELETE, UPDATE ON Users FROM 'Amit'@'localhost';
+REVOKE ALL ON Users FROM 'Amit'@'localhost';
+REVOKE SELECT  ON Users FROM '*'@'localhost';
+REVOKE EXECUTE ON PROCEDURE DBMSProcedure FROM '*'@'localhost';
