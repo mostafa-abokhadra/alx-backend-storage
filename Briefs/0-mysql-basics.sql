@@ -176,3 +176,12 @@ GRANT ALL PRIVILEGES ON databasename.* To username@host
 GRANT SELECT ON nursing.cardio TO user@localhost
 --granting privilege to all users
 GRANT SELECT ON users_table TO '*'@'local host';
+
+"""
+    Granting Privileges on Functions/Procedures: While using functions and procedures, the Grant statement
+    can be used to grant users the ability to execute the functions and procedures in MySQL.
+"""
+-- Granting Execute Privilege: Execute privilege gives the ability to execute a function or procedure.
+GRANT EXECUTE ON  PROCEDURE | FUNCTION  object TO user;
+GRANT EXECUTE ON FUNCTION Calculatesalary TO 'Amit'@'localhost';
+-- function named CalculateSalary to the user named Amit
