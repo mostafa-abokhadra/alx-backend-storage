@@ -65,6 +65,11 @@ VALUES ('mostafa', '01154199659'), ("name", "0123456789");
 
 -- retrieve
 SELECT * FROM personal_data;
+SELECT name, call_number, another_attr FROM personl_data;
+SELECT id, score FROM table_name order by score;
+SELECT score, name FROM second_table ORDER BY score DESC;
+--this will show from greatest to smallest, ,you can change DESC= key word to ASC
+SELECT score, name FROM table_name WHER score >=10 ORDER BY score DESC;
 
 -- update
 update personal_data set name = 'ahmed' where name = 'mostafa';
@@ -72,4 +77,10 @@ update personal_data set name = 'ahmed' where name = 'mostafa';
 -- delete row
 DELETE FROM personal_data where name = 'ahmed';
 -- if you didn't specify where, then every row of the table will be delelted
+
+-- to get the number of rows in your table:
+SELECT COUNT(*) FROM personal_data;
+
+-- to get the number of specified value in your table
+SELECT COUNT(*) FROM personal_data where name = 'mostafa';
 
