@@ -21,3 +21,27 @@ FROM
 WHERE
 	id=73
 
+"""to start, stop or restart, check status of sql service"""
+sudo service mysql stop
+sudo service mysql start
+sudo service mysql restart
+sudo service mysql status
+
+-- to change prompt
+prompt @; --will change the prompt from mysql> to @
+
+--to log in to sql shell
+mysql -u 'root' -p (then you will be asked to write your password "mostafa")
+
+-- DB
+CREATE database IF NOT EXISTS dbName;
+SHOW databases;
+DROP database IF EXISTS dbName;
+USE dbName
+SHOW tables FROM dbName;
+
+--tables
+CREATE TABLE IF NOT EXISTS table_name (
+	id INT,
+	name VARCHAR(256)
+);
