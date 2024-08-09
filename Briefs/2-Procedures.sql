@@ -1,37 +1,39 @@
 """
     procedures:
 
-    A procedure (often called a stored procedure) is a subroutine like a subprogram in a regular computing language,
+    -A procedure (often called a stored procedure) is a subroutine like a subprogram in a regular computing language,
     stored in database, A procedure has a name, a parameter list, and SQL statement(s).
-    All most all relational database system supports stored procedure, MySQL 5.6 supports (routines)
-    and there are two kinds of routines: 1-stored procedures which you call, or 2-functions whose return values
-    you use in other SQL statements the same way that you use pre-installed MySQL functions like pi().
-    The major difference is that UDFs can be used like any other expression within SQL statements,
-    whereas stored procedures must be invoked using the CALL statement.
-    CREATE PROCEDURE and CREATE FUNCTION require the CREATE ROUTINE privilege.
-    They might also require the SUPER privilege, If binary logging is enabled,
-    CREATE FUNCTION might require the SUPER privilege.
-    By default, MySQL automatically grants the ALTER ROUTINE and EXECUTE privileges to the routine creator.
+    -All most all relational database system supports stored procedure, MySQL 5.6 supports (routines)
+    and there are two kinds of routines:
+        1-stored procedures which you call, or
+        2-functions whose return values you use in other SQL statements the same way that you use
+        pre-installed MySQL functions like pi().
+    -The major difference is that UDFs can be used like any other expression within SQL statements,
+    whereas stored procedures "must be invoked using the CALL statement".
+    -CREATE PROCEDURE and CREATE FUNCTION require the "CREATE ROUTINE privilege".
+    -They might also require the SUPER privilege, If binary logging is enabled,
+    -CREATE FUNCTION might require the SUPER privilege.
+    -By default, MySQL automatically grants the ALTER ROUTINE and EXECUTE privileges to the routine creator.
     This behavior can be changed by disabling the automatic_sp_privileges system variable.
-    pick a delimeter: The delimiter is the character or string of characters which is used to complete an SQL
+
+    -pick a delimeter: The delimiter is the character or string of characters which is used to complete an SQL
     statement. By default we use semicolon (;) as a delimiter. But this causes problem in stored procedure because
     a procedure can have many statements, and everyone must end with a semicolon.
-    So for your delimiter, pick a string which is rarely occur within statement or within procedure.
+    -So for your delimiter, pick a string which is rarely occur within statement or within procedure.
     Here we have used double dollar sign i.e. $$. You can use whatever you want.
-    To resume using ; as a delimiter later, say `DELIMITER ; $$`
+    To resume using ; as a delimiter later, say "DELIMITER ; $$"
 """
 DELIMITER $$ ;
 CREATE PROCEDURE job_data()
-SELECT * FROM JOBS; $$
+-> SELECT * FROM JOBS; $$
 
 CALL JOB_DATA();
-
 """
     -CREATE PROCEDURE command creates the stored procedure.  
-    -Next part is the procedure name. Here the procedure name is job_data.  
+    -Next part is the "procedure name". Here the procedure name is job_data.  
     -Procedure names are not case sensitive, so job_data and JOB_DATA are same.  
     -You cannot use two procedures with the same name in the same database.  
-    -You can use qualified names of the form database-name.procedure-name, for example hr.job_data.  
+    -You can use qualified names of the form "database-name.procedure-name", for example hr.job_data.  
     -Procedure names can be delimited. If the name is delimited, it can contain spaces.  
     -The maximum name length is 64 characters.  
     -Avoid using names of built-in MySQL functions.  

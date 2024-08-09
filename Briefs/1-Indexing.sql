@@ -9,12 +9,11 @@
     the more this costs. If the table has an index for the columns in question,
     MySQL can quickly determine the position to seek to in the middle of the
     data file without having to look at all the data. This is much faster than 
-    eading every row sequentially.
+    searching every row sequentially.
 """
 
 """to list the existing indexes in a table"""
 show INDEX from table_name
-
 """
     creating indexes:
 
@@ -23,7 +22,7 @@ show INDEX from table_name
     Below we will illustrate how to create indexes with and without a PRIMARY KEY and UNIQUE constraints.
     tables can have multiple indexes. Multiple indexing is useful for creating indexes attuned to
     the queries required by your application or website. The default settings allow for up to 16 indexes per table,
-    increase this number but is generally more than is necessary. Indexes can be created during a table’s
+    increase this number but is generally more than is necessary. Indexes can be created during a table's
     creation or added on to the table as additional indexes later on. We will go over both methods below.
 """
 CREATE TABLE table_name (
