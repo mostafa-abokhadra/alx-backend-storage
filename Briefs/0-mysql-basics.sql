@@ -234,3 +234,19 @@ CREATE TABLE orders (
     a row is deleted or a value is updated (respectively) in one table, the same
     operation should be performed on the linked value or row in other tables.
 """
+
+--subqueries
+Select NAME, LOCATION, PHONE_NUMBER from DATABASE 
+WHERE ROLL_NO IN
+(SELECT ROLL_NO from STUDENT where SECTION=’A’);
+"""
+    Explanation: First subquery executes “SELECT ROLL_NO from STUDENT where SECTION='A' returns ROLL_NO
+    from STUDENT table whose SECTION is 'A'. Then outer-query executes it and return the NAME, LOCATION,
+    PHONE_NUMBER from the DATABASE table of the student whose ROLL_NO is returned from inner subquery. 
+"""
+INSERT INTO table1  SELECT * FROM table2;
+DELETE FROM Student2 WHERE ROLL_NO IN ( SELECT ROLL_NO FROM Student1 WHERE LOCATION = 'chennai');
+SELECT cities.id, cities.name FROM cities WHERE cities.state_id = (SELECT id FROM states WHERE name = 'California');
+SELECT tv_shows.title, tv_show_genres.genre_id from tv_shows inner join tv_show_genres ON tv_shows.id = 
+    (tv_show_genres.show_id) order by tv_shows.title, tv_show_genres.genre_id;
+
