@@ -1,7 +1,7 @@
 """
     View is a data object which does not contain any data.
     Contents of the view are the resultant of a base table.
-    They are operated just like base table but they don’t contain any data of their own.
+    They are operated just like base table but they don't contain any data of their own.
     The difference between a view and a table is that views are definitions built on top of other tables (or views).
     If data is changed in the underlying table, the same change is reflected in the view.
     A view can be built on top of a single or multiple tables.
@@ -11,7 +11,9 @@ The CREATE VIEW statement requires the CREATE VIEW privilege for the view
 and some privilege foreach column selected by the SELECT statement
 """
 """
-    Following statements create a view. By default, a view is associated with the default database (currently used the database). To associate the view with a given database, specify the name as database_name. view_name when you create it. Here is the complete syntax :
+    Following statements create a view. By default, a view is associated with the default database
+    (currently used the database). To associate the view with a given database, specify the name as
+    database_name.view_name when you create it. Here is the complete syntax :
 """
 CREATE
 OR REPLACE
@@ -23,9 +25,9 @@ AS select_statement
 WITH CASCADED | LOCAL CHECK OPTION 
 
 """
-    -view_name: view_name is the name of the view. A view always belongs to a  database.
+    -view_name: view_name is the name of the view. A view always belongs to a database.
     By default, a new view is created in the currently used database. The view name may
-    also be used with the  database name, as database_name.view_name, but it is unnecessary
+    also be used with the database name, as database_name.view_name, but it is unnecessary
     if database_name is the default database.
     -select_statement: The select_statement is a SELECT statement and provides the definition
     of the view. select_statement can select data from base tables or other views.
@@ -33,8 +35,8 @@ WITH CASCADED | LOCAL CHECK OPTION
 CREATE VIEW my_v1 AS SELECT * FROM user_details;
 """
     column_list: The column_list part is optional. It provides a list of names for the view's
-    columns right after the view name where the names must be unique. The number of names in
-    column_list must be the same as the number of columns retrieved by the SELECT statement.
+    columns right after the view name where the names must be unique. "The number of names in
+    column_list must be the same as the number of columns retrieved by the SELECT statement".
     If you want to give your view columns a different name, you can do so by adding an [AS name]
     clause in the select list.
 """

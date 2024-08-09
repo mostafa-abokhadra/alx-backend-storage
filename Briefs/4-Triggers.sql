@@ -34,9 +34,9 @@ trigger_event:
         for example, through INSERT, LOAD DATA, and REPLACE statements.
         -The trigger activates whenever a row is modified; for example, through UPDATE statements.
         -The trigger activates whenever a row is deleted from the table; for example,
-        through DELETE and REPLACE statements. DROP TABLE and TRUNCATE TABLE statements on the table
-        do not activate this trigger, because they do not use DELETE.
-        Dropping a partition does not activate DELETE triggers, either.
+        through DELETE and REPLACE statements.
+        DROP TABLE and TRUNCATE TABLE statements on the table do not activate this trigger,
+        because they do not use DELETE, Dropping a partition does not activate DELETE triggers, either.
 tbl_name:
     The trigger becomes associated with the table named tbl_name,
     which must refer to a permanent table. You cannot associate a
@@ -52,10 +52,10 @@ CREATE TRIGGER ins_sum BEFORE INSERT ON account
     In the above example, there is new keyword 'NEW' which is a  MySQL extension to triggers.
     There is two MySQL extension to triggers 'OLD' and 'NEW'. OLD and NEW are not case sensitive.
     Within the trigger body, the OLD and NEW keywords enable you to access columns in the rows affected by a trigger
-    In an INSERT trigger, only NEW.col_name can be used.
-    In a UPDATE trigger, you can use OLD.col_name to refer to the columns of a row before it is updated
+    -In an INSERT trigger, only NEW.col_name can be used.
+    -In a UPDATE trigger, you can use OLD.col_name to refer to the columns of a row before it is updated
     and NEW.col_name to refer to the columns of the row after it is updated.
-    In a DELETE trigger, only OLD.col_name can be used; there is no new row
+    -In a DELETE trigger, only OLD.col_name can be used; there is no new row
 """
 """
     A column named with OLD is read only. You can refer to it (if you have the SELECT privilege), but not modify it.
@@ -68,7 +68,7 @@ CREATE TRIGGER ins_sum BEFORE INSERT ON account
 example: AFTER INSERT
 """
     In the following example, we have two tables: emp_details and log_emp_details.
-    To insert some information into log_ emp_details table (which have three fields employee id and salary and edttime)
+    To insert some information into log_emp_details table (which have three fields employee id and salary and edttime)
     every time, when an INSERT happen into emp_details table we have used the following trigger :
 """
 CREATE
