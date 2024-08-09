@@ -61,3 +61,5 @@ BEGIN
 END; $$
 DELIMITER ;
 
+CREATE INDEX idx_name_first ON names (name(1))
+-- indexing only the first char of name
