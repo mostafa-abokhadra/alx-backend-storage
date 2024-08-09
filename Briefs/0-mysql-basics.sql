@@ -261,3 +261,8 @@ curl 'url_for_dbTable_file' -s | sudo mysql -u 'root' -p
 -- (-s) stands for silent which suppresses the progress meter and error messages from curl.
 -- another way
 sudo mysql -u 'root' -p database name < sql_file_path
+
+-- to truncate a table that have a reference to foreign key in it
+SET FOREIGN_KEY_CHECKS = 0;
+truncate table table_name;
+SET FOREIGN_KEY_CHECKS = 1;
