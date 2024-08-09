@@ -23,3 +23,14 @@ CREATE TRIGGER decrease_quantity
 AFTER INSERT ON orders
 FOR EACH ROW
 UPDATE items SET quantity = quantity - NEW.number WHERE name=NEW.item_name;
+
+DELIMITER $$ ;
+CREATE TRIGGER resets_valid_email
+BEFORE UPDATE ON users
+FOR EACH ROW
+BEGIN
+	IF NEW.email != OLD.email THEN
+		SET NEW.valid_email = 0;
+	END IF;
+END;
+DELIMITER ;

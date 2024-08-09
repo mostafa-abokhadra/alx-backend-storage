@@ -1,4 +1,4 @@
--- SQL script that ranks country origins of bands
+-- ranks country origins of bands
 -- Ordered by the number of fans
 -- Column must be origin and nb_fans
 
