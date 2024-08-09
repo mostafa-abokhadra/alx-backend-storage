@@ -31,7 +31,7 @@ sudo service mysql status
 prompt @; --will change the prompt from mysql> to @
 
 --to log in to sql shell
-mysql -u 'root' -p (then you will be asked to write your password "mostafa")
+sudo mysql -u 'root' -p (then you will be asked to write your password "mostafa")
 
 -- DB
 CREATE database IF NOT EXISTS dbName;
@@ -250,3 +250,8 @@ SELECT cities.id, cities.name FROM cities WHERE cities.state_id = (SELECT id FRO
 SELECT tv_shows.title, tv_show_genres.genre_id from tv_shows inner join tv_show_genres ON tv_shows.id = 
     (tv_show_genres.show_id) order by tv_shows.title, tv_show_genres.genre_id;
 
+-- importing sql dump
+first insure the data base exist so
+create database first
+use database
+source path/to/sqlfile
