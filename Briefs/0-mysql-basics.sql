@@ -259,3 +259,5 @@ source path/to/sqlfile
 echo "create database db_name" | sudo mysql -u 'root' -p
 curl 'url_for_dbTable_file' -s | sudo mysql -u 'root' -p
 -- (-s) stands for silent which suppresses the progress meter and error messages from curl.
+-- another way
+sudo mysql -u 'root' -p database name < sql_file_path
