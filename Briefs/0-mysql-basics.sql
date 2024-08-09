@@ -200,3 +200,37 @@ REVOKE ALL ON Users FROM 'Amit'@'localhost';
 REVOKE SELECT  ON Users FROM '*'@'localhost';
 REVOKE EXECUTE ON PROCEDURE DBMSProcedure FROM '*'@'localhost';
 
+"""
+Constraints are the rules that we can apply on the type of data in a table.
+https://www.geeksforgeeks.org/sql-constraints/
+https://www.cockroachlabs.com/blog/what-is-a-foreign-key/ -- FOREIGN KEY GOOD REF
+"""
+NOT NULL
+UNIQUE
+PRIMARY KEY
+FOREIGN KEY
+CHECK -- This constraint helps to validate the values of a column to meet a particular condition.
+      -- That is, it helps to ensure that the value stored in a column meets a specific condition.
+DEFAULT
+AUTO_INCREMENT
+
+CREATE TABLE IF NOT EXISTS hbtn_0d_usa.states(
+    id INT UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(256) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS hbtn_0d_usa.cities(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    state_id INT NOT NULL,
+    FOREIGN KEY (state_id) REFERENCES hbtn_0d_usa.states(id),
+    name VARCHAR(256) NOT NULL
+);
+CREATE TABLE orders (
+  order _no INT PRIMARY KEY,
+  user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  product_sku INT NOT NULL REFERENCES books(product_sku)ON DELETE CASCADE ON UPDATE CASCADE,
+); 
+"""
+    in the code above, ON DELETE CASCADE and ON UPDATE CASCADE specify that when
+    a row is deleted or a value is updated (respectively) in one table, the same
+    operation should be performed on the linked value or row in other tables.
+"""
