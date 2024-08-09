@@ -255,3 +255,7 @@ first insure the data base exist so
 create database first
 use database
 source path/to/sqlfile
+-- if you want to import from the internet
+echo "create database db_name" | sudo mysql -u 'root' -p
+curl 'url_for_dbTable_file' -s | sudo mysql -u 'root' -p
+-- (-s) stands for silent which suppresses the progress meter and error messages from curl.
