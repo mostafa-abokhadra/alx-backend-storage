@@ -44,6 +44,10 @@ SHOW tables FROM dbName;
 CREATE TABLE IF NOT EXISTS table_name (
 	id INT UNIQUE NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(256)
+    country ENUM('EGYPT', 'SAUDI', 'US') DEFAULT 'EGYPT' 
+    -- enum allow you to define a datatype that can only hold
+    -- certian values
+
 );
 
 DESCRIBE table_name; --will show table rows and columns
@@ -58,6 +62,7 @@ ALTER TABLE table_name ADD column_name data_type;
 ALTER TABLE table_name DROP COLUMN column_name;
 ALTER TABLE table_name MODIFY column_name column_data_type;
 ALTER TABLE `first_table` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER COLUMN status SET DEFAULT 'active';
 
 -- insertion
 INSERT INTO personal_data (name, call_number)
@@ -194,3 +199,4 @@ REVOKE SELECT, INSERT, DELETE, UPDATE ON Users FROM 'Amit'@'localhost';
 REVOKE ALL ON Users FROM 'Amit'@'localhost';
 REVOKE SELECT  ON Users FROM '*'@'localhost';
 REVOKE EXECUTE ON PROCEDURE DBMSProcedure FROM '*'@'localhost';
+
