@@ -11,6 +11,7 @@ https://www.w3resource.com/mysql/mysql-triggers.php
     occurs for the table. The statement CREATE TRIGGER creates a new trigger in MySQL.
 """
 syntax
+
 CREATE     
 DEFINER = user | CURRENT_USER     
 TRIGGER trigger_name     

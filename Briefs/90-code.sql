@@ -19,3 +19,8 @@ SELECT name, COALESCE(email, phone, 'No contact information') AS contact_info FR
 SELECT band_name, COALESCE(split, 2022) - formed as lifespan FROM metal_bands
 WHERE style LIKE '%Glam rock%' ORDER BY lifespan DESC;
 
+CREATE TRIGGER decrease_quantity
+AFTER INSERT ON orders
+FOR EACH ROW
+UPDATE items SET quantity = quantity - NEW.number WHERE name=NEW.item_name;
+
