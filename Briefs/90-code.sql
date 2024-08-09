@@ -32,5 +32,21 @@ BEGIN
 	IF NEW.email != OLD.email THEN
 		SET NEW.valid_email = 0;
 	END IF;
-END;
+END; $$
 DELIMITER ;
+
+DELIMITER $$;
+CREATE PROCEDURE AddBonus(
+    IN user_id INT,
+    IN project_name VARCHAR(255),
+    IN score INT)
+BEGIN
+    IF NOT EXISTS(SELECT * FROM projects WHERE name = project_name) THEN
+        INSERT INTO projects (name)
+        VALUES(project_name);
+    END IF
+    INSERT INTO correction(user_id, project_id, score)
+    VALUES (user_id, (SELECT id from projects WHERE name=project_name), score);
+END; $$
+DELIMITER ;
+
