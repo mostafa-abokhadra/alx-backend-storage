@@ -1,3 +1,2 @@
 // insering new doc
-use "$1"
 db.school.insertOne({name: "Holberton school"})
