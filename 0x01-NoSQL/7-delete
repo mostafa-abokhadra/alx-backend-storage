@@ -1,5 +1,5 @@
 // delete doc with certain name
 db.school.delete(
-    {name: "Holberton school"}
+    {name: "Holberton school"},
     {multi: true}
 )
