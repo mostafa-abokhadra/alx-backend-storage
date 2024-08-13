@@ -1,0 +1,4 @@
+// insering new doc
+use "$1"
+db.createCollection("school")
+db.school.inserOne({name: “Holberton school”})
