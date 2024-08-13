@@ -40,12 +40,6 @@ from pymongo import MongoClient
 #     print("\tmethod PATCH: {}".format(patch))
 #     print("\tmethod DELETE: {}".format(delete))
 #     print("{} status check".format(get_and_status))
-
-
-# if __name__ == "__main__":
-#     main()
-
-
 def main():
     """ main func
     """
