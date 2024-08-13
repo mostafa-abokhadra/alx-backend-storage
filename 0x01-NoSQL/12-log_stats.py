@@ -34,12 +34,13 @@ def main():
 
     print(lenght, "logs")
     print("Methods:")
-    print("\tmethod GET: {}".format(get))
-    print("\tmethod POST: {}".format(post))
-    print("\tmethod PUT: {}".format(put))
-    print("\tmethod PATCH: {}".format(patch))
-    print("\tmethod DELETE: {}".format(delete))
+    print("    method GET: {}".format(get))
+    print("    method POST: {}".format(post))
+    print("    method PUT: {}".format(put))
+    print("    method PATCH: {}".format(patch))
+    print("    method DELETE: {}".format(delete))
     print("{} status check".format(get_and_status))
+
 
 if __name__ == "__main__":
     main()
