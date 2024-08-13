@@ -12,4 +12,4 @@ def schools_by_topic(mongo_collection, topic):
     #     if topic in dictionary.topics:
     #         contain.append(dict(dictionary))
     # return contain
-     return mongo_collection.find({"topics": topic})
+    return mongo_collection.find({"topics": topic})
