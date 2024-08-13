@@ -8,7 +8,7 @@ def schools_by_topic(mongo_collection, topic):
     """
     contain = []
     all = mongo_collection.find()
-    for dict in all:
-        if topic in dict.topics:
-            contain.append(dict)
+    for dictionary in all:
+        if topic in dictionary.topics:
+            contain.append(dict(dictionary))
     return contain
