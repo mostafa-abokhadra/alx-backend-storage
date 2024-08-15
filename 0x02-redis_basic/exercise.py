@@ -3,6 +3,7 @@
 """
 import redis
 import uuid
+from typing import Callable
 
 
 class Cache:
@@ -17,4 +18,24 @@ class Cache:
     def store(self, data: str | bytes | int | float) -> str:
         """storing data to redis
         """
-        self._redis.set(uuid.uuid4(), data)
+        key = uuid.uuid4()
+        self._redis.set(key, data)
+        return str(key)
+    
+    # def get(self, key: bytes, fn: Callable):
+    #     """getting and converting byte to desired
+    #     """ 
+    #     if not key:
+    #         return "(nil)"
+    #     return fn(key)
+    
+    # def get_str(self, data):
+    #     """get string
+    #     """
+    #     Cache.get(str(data))
+    
+    # def get_int(self, data):
+    #     """get integer
+    #     """
+    #     Cache.get(int(data))
+
