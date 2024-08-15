@@ -3,7 +3,23 @@
 """
 import redis
 import uuid
-from typing import Callable, Union
+from functools import wraps
+from typing import Callable, Union, Any
+
+
+def count_calls(method: Callable) -> Callable:
+    """ # of calls made to Cashe class methods
+    """
+    @wraps(method)
+    def wrapper(self, *args, **kwargs) -> Any:
+        """returns the method after incrementing call counter
+        """
+        if isinstance(self._redis, redis.Redis):
+            self._redis.incr(method.__qualname__)
+        return method(self, *args, **kwargs)
+    return wrapper
+
+    return wrapper
 
 
 class Cache:
@@ -15,6 +31,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb(True)
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """storing data to redis
         """
@@ -37,3 +54,4 @@ class Cache:
         """get integer
         """
         return self.get(key, lambda x: int(x))
+
