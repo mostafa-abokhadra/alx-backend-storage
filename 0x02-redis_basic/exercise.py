@@ -22,20 +22,18 @@ class Cache:
         self._redis.set(key, data)
         return key
     
-    # def get(self, key: bytes, fn: Callable):
-    #     """getting and converting byte to desired
-    #     """ 
-    #     if not key:
-    #         return "(nil)"
-    #     return fn(key)
+    def get(self, key: str, fn: Callable = None) -> Union[str, bytes, int, float]:
+        """getting and converting byte to desired
+        """ 
+        data = self._redis.get(key)
+        return fn(data) if fn is not None else data
     
-    # def get_str(self, data):
-    #     """get string
-    #     """
-    #     Cache.get(str(data))
+    def get_str(self, key: str) -> str:
+        """get string
+        """
+        return self.get(key, lambda x: x.decode('utf-8'))
     
-    # def get_int(self, data):
-    #     """get integer
-    #     """
-    #     Cache.get(int(data))
-
+    def get_int(self, key: str) -> int:
+        """get integer
+        """
+        return self.get(key, lambda x: int(x))
