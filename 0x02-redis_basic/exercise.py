@@ -13,14 +13,14 @@ class Cache:
         """init method
         """
         self._redis = redis.Redis()
-        self._redis.flushdb()
+        self._redis.flushdb(True)
 
     def store(self, data: str | bytes | int | float) -> str:
         """storing data to redis
         """
-        key = uuid.uuid4()
+        key = str(uuid.uuid4())
         self._redis.set(key, data)
-        return str(key)
+        return key
     
     # def get(self, key: bytes, fn: Callable):
     #     """getting and converting byte to desired
