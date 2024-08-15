@@ -31,6 +31,7 @@ def replay(fn: Callable) -> None:
             fxn_output,
         ))
 
+
 def call_history(method: Callable) -> Callable:
     """history of inputs and outputs of a Cash calss method
     """
