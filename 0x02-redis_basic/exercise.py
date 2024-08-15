@@ -7,6 +7,23 @@ from functools import wraps
 from typing import Callable, Union, Any
 
 
+def call_history(method: Callable) -> Callable:
+    """history of inputs and outputs of a Cash calss method
+    """
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """wrapper
+        """
+        inputs_keys = "{}:inputs".format(method.__qualname__)
+        outputs_keys = "{}:outputs".format(method.__qualname__)
+        if isinstance(self._redis, redis.Redis):
+            self._redis.rpush(inputs_keys, str(args))
+        output = method(self, *args, **kwargs)
+        if isinstance(self._redis, redis.Redis):
+            self._redis.rpush(outputs_keys, output)
+        return output
+    return wrapper
+
 def count_calls(method: Callable) -> Callable:
     """ # of calls made to Cashe class methods
     """
@@ -32,6 +49,7 @@ class Cache:
         self._redis.flushdb(True)
 
     @count_calls
+    @call_history
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """storing data to redis
         """
